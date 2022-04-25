@@ -3,6 +3,7 @@ from subprocess import call
 from tkinter import ttk, Tk
 from tkinter import *
 from tkinter import messagebox
+import mysql.connector
 
 #Fonction Connecter
 def Seconnecter():
@@ -24,7 +25,8 @@ def Seconnecter():
         txtmdp.delete("0", "end")
         txtnomUtilisateur.delete("0", "end")
 
-
+def Inscription():
+    call(["python", "Accueil.py"])
 
 #La fenetre
 root  = Tk()
@@ -52,6 +54,11 @@ txtmdp.place(x=150,y=150,width=200,height=30)
 #Bouton Connecter
 btnenregistrer = Button(root, text = "Connexion", font = ("Arial", 16),bg ="#A52A2A", fg = "white", command=Seconnecter)
 btnenregistrer.place(x=150, y= 200, width=200)
+
+#Bouton S'inscrire
+btninscription = Button(root, text = "S'inscrire", font = ("Arial", 16),bg ="#A52A2A", fg = "white", command=Inscription)
+btninscription.place(x=150, y= 250, width=200)
+
 
 
 #Execution
