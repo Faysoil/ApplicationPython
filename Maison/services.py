@@ -14,8 +14,8 @@ def ajouter(personne):
     conn = connection()
     cursor = conn.cursor()
 
-    valeurs = (personne.prenom, personne.nom, personne.photo)
-    cursor.execute(""" INSERT INTO personne (prenom, nom, photo) VALUES(%s, %s, %s) """,valeurs)
+    valeurs = (personne.prenom, personne.nom, personne.photo, personne.mdp)
+    cursor.execute(""" INSERT INTO personne (prenom, nom, photo, mdp) VALUES(%s, %s, %s, %s) """,valeurs)
     conn.close()
 
 

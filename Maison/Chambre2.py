@@ -38,7 +38,7 @@ def Ajouter():
         maBase.close()
 
 
-def Modifer():
+"""def Modifer():
     matricule = txtNumero.get()
     nom = txtnom.get()
     prenom = txtprenom.get()
@@ -62,13 +62,14 @@ def Modifer():
 
     except Exception as e:
         print(e)
+
         #retour
         maBase.rollback()
-        maBase.close()
+        maBase.close()"""
 
 
 
-def Supprimer():
+"""def Supprimer():
     matricule = txtNumero.get()
 
     maBase = mysql.connector.connect(host="localhost", user="root",password="", database="note_eleve")
@@ -88,20 +89,20 @@ def Supprimer():
         print(e)
         #retour
         maBase.rollback()
-        maBase.close()
+        maBase.close()"""
 
 
 #Ma fenetre
 root  = Tk()
 
-root.title("Mnu principal")
+root.title("Menu principal")
 root.geometry("1350x700+0+0")
 root.resizable(False, False)
 root.configure(background="#FFE4C4")
 
 #Ajouter le titre
 lbltitre = Label(root,borderwidth = 3, relief = SUNKEN
-                 , text = "Gestion de notes des élèves", font = ("Sans Serif", 25), background = "#A52A2A", fg="#FFFAFA")
+                 , text = "Gestion de notes d'employés", font = ("Sans Serif", 25), background = "#A52A2A", fg="#FFFAFA")
 lbltitre.place(x = 0, y = 0, width = 1350, height=100)
 
 #Matricule
@@ -131,7 +132,7 @@ txtSexeFeminin = Radiobutton(root,text="Femme",value="F", variable=valeurSexe, i
 txtSexeFeminin.place(x=420,y=300,width=130)
 
 #Classe
-lblClasse = Label(root, text="Classe", font=("Arial", 18), bg="#A52A2A", fg="white")
+lblClasse = Label(root, text="Secteur", font=("Arial", 18), bg="#A52A2A", fg="white")
 lblClasse.place(x=70, y=350, width=150, )
 
 comboClasse = ttk.Combobox(root,font=("Arial", 14))
@@ -139,7 +140,7 @@ comboClasse['values'] = ['NDRC1', 'NDRC2', 'SIO1 ', 'SIO2']
 comboClasse.place(x=250, y=350, width=130)
 
 #Matiere
-lblmatiere = Label(root, text="Matiere", font=("Arial", 18), bg="#A52A2A", fg="white")
+lblmatiere = Label(root, text="Performance", font=("Arial", 18), bg="#A52A2A", fg="white")
 lblmatiere.place(x=70, y=400, width=150, )
 
 combomatiere = ttk.Combobox(root,font=("Arial", 14))
@@ -156,13 +157,13 @@ txtnote.place(x=250,y=450,width=200)
 btnenregistrer = Button(root, text = "Enregistrer", font = ("Arial", 16),bg = "#A52A2A", fg = "white", command=Ajouter)
 btnenregistrer.place(x=250, y= 500, width=200)
 
-#modifier
+"""#modifier
 btnmodofier = Button(root, text = "Modifier", font = ("Arial", 16),bg = "#A52A2A", fg = "white", command=Modifer)
 btnmodofier.place(x=250, y= 550, width=200)
 
 #Supprimer
 btnSupprimer = Button(root, text = "Supprimer", font = ("Arial", 16),bg = "#A52A2A", fg = "white", command=Supprimer)
-btnSupprimer.place(x=250, y= 600, width=200)
+btnSupprimer.place(x=250, y= 600, width=200)"""
 
 #Table
 table = ttk.Treeview(root, columns = (1, 2, 3, 4, 5, 6, 7), height = 5, show = "headings")
@@ -182,8 +183,8 @@ table.heading(1 , text = "Id")
 table.heading(2 , text = "Nom")
 table.heading(3 , text = "Prénom")
 table.heading(4 , text = "Sexe")
-table.heading(5 , text = "Classe")
-table.heading(6 , text = "Matiere")
+table.heading(5 , text = "Secteur")
+table.heading(6 , text = "Performance")
 table.heading(7 , text = "Note")
 
 # afficher les informations de la table

@@ -22,6 +22,7 @@ def listeInscrit(fenetre,liste):
   nom.grid(row=1,column=2,padx=5,pady=5)
   status.grid(row=2,column=0,columnspan=3)
 
+
   if liste:
     r=2
     for p in liste:
@@ -39,5 +40,7 @@ def listeInscrit(fenetre,liste):
       r+=1
     status.configure(text="{} inscrits pour le moment".format(len(liste)))
     status.grid(row=r,column=0,columnspan=3,pady=2)
+
+
 
   newFen.mainloop()
