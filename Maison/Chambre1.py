@@ -30,7 +30,7 @@ def Seconnecter():
         try:
             conn = mysql.connector.connect(host="localhost",user="root",password="",database="note_eleve")
             cursor = conn.cursor()
-            cursor.execute("select * from personne where nom=%s and mdp=%s",(surnom, mdp))
+            cursor.execute("select * from admin where nom=%s and mdp=%s",(surnom, mdp))
             row=cursor.fetchone()
             if row == None:
                 messagebox.showerror("Erreur", "Invalide")

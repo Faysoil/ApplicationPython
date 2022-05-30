@@ -22,20 +22,32 @@ def Ajouter():
     meConnect = maBase.cursor()
 
     try:
-        sql = "INSERT INTO note (code, nom, prenom, sexe, classe, matiere, notes) VALUES (%s, %s, %s,%s, %s, %s, %s) "
-        val = (matricule, nom,prenom, sexe,classe, matiere ,note )
-        meConnect.execute(sql, val)
-        maBase.commit()
-        derniereMatricule = meConnect.lastrowid
-        messagebox.showinfo("information", "Note ajouter")
-        root.destroy()
-        call(["python", "Chambre2.py"])
+        conn = mysql.connector.connect(host="localhost", user="root", password="", database="note_eleve")
+        cursor = conn.cursor()
+        cursor.execute("select * from personne where nom=%s and prenom=%s", (nom, prenom))
+        row = cursor.fetchone()
+        if row == None:
+            messagebox.showerror("Erreur", "Cet employé n'existe pas")
+        else:
+            try:
+                sql = "INSERT INTO note (code, nom, prenom, sexe, classe, matiere, notes) VALUES (%s, %s, %s,%s, %s, %s, %s) "
+                val = (matricule, nom,prenom, sexe,classe, matiere ,note )
+                meConnect.execute(sql, val)
+                maBase.commit()
+                derniereMatricule = meConnect.lastrowid
+                messagebox.showinfo("information", "Note ajouter")
+                root.destroy()
+                call(["python", "Chambre2.py"])
 
-    except Exception as e:
-        print(e)
-        #retour
-        maBase.rollback()
-        maBase.close()
+            except Exception as e:
+                print(e)
+
+            #retour
+            maBase.rollback()
+            maBase.close()
+
+    except Exception as ex:
+        messagebox.showerror("Erreur", f"Erreur de connexion{str(ex)}")
 
 
 """def Modifer():
